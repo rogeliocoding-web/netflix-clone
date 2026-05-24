@@ -25,10 +25,11 @@ const Home = () => {
               Play</button>
               <button className='btn dark-btn'><img src={info_icon} 
               alt="" />More Info</button>
-            </div>
+         
+      </div>
+         </div>
             <TitleCards/>
         </div>
-      </div>
       <div className="more-cards">
         <TitleCards title={"Blockbuster Movies"} category={'top_rated'}/>
         <TitleCards title={"Only on Netflix"} category={'popular'}/>
