@@ -1,5 +1,5 @@
 .hero {
-    posittion: relative;
+    position: relative;
 }
 .banner-img {
     width: 100%;
@@ -66,5 +66,7 @@ background: #ffffffbf;
 }
 .more-cards {
     padding-left: 6%;
+    
+    
     
 }
