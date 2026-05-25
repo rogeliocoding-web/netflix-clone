@@ -31,9 +31,9 @@ const Home = () => {
               More Info
             </button>
           </div>
-          <div className="title-cards">
+          
             <TitleCards />
-          </div>
+         
         </div>
       </div>
 
