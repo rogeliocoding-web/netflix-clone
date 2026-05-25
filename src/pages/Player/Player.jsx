@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Player.css'
 import back_arroow_icon from '../../assets/back_arrow_icon.png'
 import { useNavigate, useParams } from 'react-router-dom'

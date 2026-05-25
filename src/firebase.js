@@ -1,13 +1,14 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/web-extension";
 import { createUserWithEmailAndPassword,
     getAuth,
-    signInWithEmailAndPassword} from "firebase/auth/";
+    signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 import { 
     addDoc, 
     collection, 
-    getFirestore } from "firebase/firestore/";
+    getFirestore,
+ } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 
 const firebaseConfig = {
@@ -24,31 +25,33 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const singup = async (name, email, password) => {
+const signup = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
-        return res;
+        
         await addDoc (collection(db, 'users'), {
             uid: user.uid,
             name,
             authProvider: 'local',
             email,
         })
+        return res;
     } catch (error) {
         console.log(error);
-        allert(error);
+        toast.error(error.code.split('/')[1].split('-').join(' '));
     }
 }
 
 const login = async(email, password) => {
     try {
         const res = await signInWithEmailAndPassword(auth, email, password);
+        return res;
 
     }catch (error) {
         console.log(error);
-        allert(error);
-    }
+        toast.error(error.code.split('/')[1].split('-').join(' '));
+    }  
 }
 
 const logout = () => {
@@ -56,5 +59,5 @@ const logout = () => {
 }
 
 
-export {auth, db, singup, login, logout}
+export {auth, db, signup, login, logout, onAuthStateChanged}
 
