@@ -70,3 +70,13 @@ background: #ffffffbf;
     
     
 }
+
+@media (max-width: 500px) {
+    .hero-caption {
+        .padding-left .title-cards {
+            display: none;
+        }
+    }
+  
+    
+}

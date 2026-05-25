@@ -12,16 +12,22 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const user_auth = async (event) => {
+const user_auth = async (event) => {
     event.preventDefault();
     setLoading(true);
-    if(signState === 'Sign In'){
-      await login(email, password);
-    }else {
+    try {
+      if(signState === 'Sign In'){
+        await login(email, password);
+      } else {
         await signup(name, email, password);
       }
-      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    } finally {
+      setLoading(false);  
     }
+  }
   
 
   return (
